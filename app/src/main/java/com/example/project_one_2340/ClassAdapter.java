@@ -38,9 +38,9 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
 
         public ViewHolder(View view, final OnItemClickListener editListener, final OnItemClickListener deleteListener) {
             super(view);
-            className = view.findViewById(R.id.tv_class_name);
-            professorName = view.findViewById(R.id.tv_professor_name);
-            meetingTime = view.findViewById(R.id.tv_meeting_time);
+            className = view.findViewById(R.id.title_1);
+            professorName = view.findViewById(R.id.subtitle_2);
+            meetingTime = view.findViewById(R.id.subtitle_1);
             editButton = view.findViewById(R.id.btn_edit);
             deleteButton = view.findViewById(R.id.btn_delete);
 
@@ -75,7 +75,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
 
     @Override
     public ClassAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.class_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gen_item, parent, false);
         return new ViewHolder(view, onEditClickListener, onDeleteClickListener);
     }
 

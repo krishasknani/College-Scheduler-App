@@ -13,30 +13,30 @@
 
         <!-- TextView for the Class Name -->
         <TextView
-            android:id="@+id/tv_class_name"
+            android:id="@+id/title_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="18sp"
             android:fontFamily="sans-serif-medium"
-            android:text="Class Name" />
+            android:text="Title 1" />
 
         <!-- TextView for the Meeting Time -->
         <TextView
-            android:id="@+id/tv_meeting_time"
+            android:id="@+id/subtitle_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="Meeting Time" />
+            android:text="Subtitle 2" />
     </LinearLayout>
 
     <!-- TextView for the Professor's Name -->
     <TextView
-        android:id="@+id/tv_professor_name"
+        android:id="@+id/subtitle_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="Professor Name" />
+        android:text="Subtitle 1" />
 
     <!-- Container for Edit and Delete Buttons -->
     <LinearLayout

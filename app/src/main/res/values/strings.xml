@@ -7,6 +7,20 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <string name="class_name">Class</string>
+    <string name="class_date_and_time">Monday, 12:00 AM</string>
+    <string name="class_professor">Professor Name</string>
+
+    <string name="assignment_name">Assignment</string>
+    <string name="assignment_date_and_time">MM/DD/YY</string>
+
+    <string name="exam_name">Exam</string>
+    <string name="exam_date_and_time">MM/DD/YY, 12:00 AM</string>
+    <string name="exam_location">Location</string>
+
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus

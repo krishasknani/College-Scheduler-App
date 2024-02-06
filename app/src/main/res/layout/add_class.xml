@@ -1,0 +1,32 @@
+<!-- dialog_add_class.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edit_class_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Class Name" />
+
+    <EditText
+        android:id="@+id/edit_professor_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Professor Name" />
+
+    <EditText
+        android:id="@+id/edit_meeting_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Meeting Time" />
+
+    <Button
+        android:id="@+id/button_add_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Class" />
+
+</LinearLayout>

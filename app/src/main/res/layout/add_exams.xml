@@ -1,0 +1,33 @@
+<!-- dialog_add_exam.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edit_exam_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Exam Title" />
+
+    <EditText
+        android:id="@+id/edit_exam_datetime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Exam Date and Time"
+     />
+
+    <EditText
+        android:id="@+id/edit_exam_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Exam Location" />
+
+    <Button
+        android:id="@+id/button_add_exam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Exam" />
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<!-- dialog_add_assignment.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Assignment Title" />
+
+    <EditText
+        android:id="@+id/edit_due_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Due Date"
+        />
+
+    <EditText
+        android:id="@+id/edit_associated_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Associated Class" />
+
+    <Button
+        android:id="@+id/button_add_assignment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Assignment" />
+
+</LinearLayout>

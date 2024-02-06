@@ -19,8 +19,13 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AssignmentsActivity extends AppCompatActivity {
     private List<GenericItem> myAssignments = new ArrayList<>();
@@ -49,6 +54,7 @@ public class AssignmentsActivity extends AppCompatActivity {
         adapter.setOnDeleteClickListener(this::showDialogToDeleteAssignment);
         adapter.setOnEditClickListener(this::showEditAssignmentDialog);
         setupBottomNavigation();
+        setupSortButton();
 
     }
 
@@ -178,4 +184,49 @@ public class AssignmentsActivity extends AppCompatActivity {
         // Highlight the current tab (Assignments)
         bottomNav.setSelectedItemId(R.id.assignments);
     }
+
+
+    private void showSortOptionsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sort by");
+        String[] options = {"Due Date", "Class Name"};
+        builder.setItems(options, (dialog, which) -> {
+            switch (which) {
+                case 0: // Due Date
+                    sortByDueDate();
+                    break;
+                case 1: // Class Name
+                    sortByClassName();
+                    break;
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void sortByDueDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy", Locale.US);
+        Collections.sort(myAssignments, (o1, o2) -> {
+            try {
+                Date date1 = sdf.parse(o1.getSubtitle1());
+                Date date2 = sdf.parse(o2.getSubtitle1());
+                return date1.compareTo(date2);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return 0;
+            }
+        });
+        adapter.notifyDataSetChanged();
+    }
+
+    private void sortByClassName() {
+        Collections.sort(myAssignments, (o1, o2) -> o1.getSubtitle2().compareToIgnoreCase(o2.getSubtitle2()));
+        adapter.notifyDataSetChanged();
+    }
+    private void setupSortButton() {
+        Button sortButton = findViewById(R.id.btn_sort);
+        sortButton.setOnClickListener(v -> showSortOptionsDialog());
+    }
+
+
 }

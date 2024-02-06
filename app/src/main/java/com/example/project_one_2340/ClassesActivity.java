@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,8 @@ public class ClassesActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private static final String PREFS_NAME = "classPrefs";
     private static final String CLASS_LIST_KEY = "classList";
+    private List<String> toDoList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,9 @@ public class ClassesActivity extends AppCompatActivity {
         adapter.setOnDeleteClickListener(position -> showDialogToDeleteClass(position));
         adapter.setOnEditClickListener(position -> showEditClassDialog(position));
         setupBottomNavigation();
+
+        Button toDoListButton = findViewById(R.id.btn_to_do_list);
+        toDoListButton.setOnClickListener(v -> showToDoList());
     }
 
     private void showDialogToDeleteClass(int position) {
@@ -187,5 +193,64 @@ public class ClassesActivity extends AppCompatActivity {
         // Highlight the current tab (Classes)
         bottomNav.setSelectedItemId(R.id.classes);
     }
+
+    private void showToDoList() {
+        CharSequence[] items = toDoList.toArray(new CharSequence[0]);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("To-Do List");
+        builder.setItems(items, (dialog, which) -> {
+            showEditDeleteOptionsDialog(which);
+        });
+        builder.setPositiveButton("Add Task", (dialog, which) -> {
+            showAddTaskDialog();
+        });
+        builder.setNegativeButton("Close", null);
+        builder.show();
+    }
+    private void showAddTaskDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add New Task");
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+        builder.setPositiveButton("Add", (dialog, which) -> {
+            toDoList.add(input.getText().toString());
+            // Optionally refresh the to-do list dialog or other UI elements here
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.show();
+    }
+
+    private void showEditDeleteOptionsDialog(final int taskIndex) {
+        CharSequence[] items = {"Edit", "Delete"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Option");
+        builder.setItems(items, (dialog, which) -> {
+            if (which == 0) {
+                showEditTaskDialog(taskIndex);
+            } else {
+                toDoList.remove(taskIndex);
+                // Optionally refresh the to-do list dialog or other UI elements here
+            }
+        });
+        builder.show();
+    }
+
+    private void showEditTaskDialog(final int taskIndex) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Edit Task");
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setText(toDoList.get(taskIndex));
+        builder.setView(input);
+        builder.setPositiveButton("Update", (dialog, which) -> {
+            toDoList.set(taskIndex, input.getText().toString());
+            // Optionally refresh the to-do list dialog or other UI elements here
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.show();
+    }
+
+
 
 }
